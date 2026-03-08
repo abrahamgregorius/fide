@@ -1,22 +1,24 @@
 
-import { BookOpen, Globe, Sparkles, Trophy, TrendingUp, HelpCircle, Menu, Star } from 'lucide-react';
-import logo from '../assets/logo.png';
-
 import PixelPath from '../components/PixelPath';
 import PixelBurst from '../components/PixelBurst';
+import Sidebar from '../components/Sidebar';
 import { useState, useEffect } from 'react';
-import mascot from '../assets/logo.png';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { BookOpen, Globe, HelpCircle, Menu, Sparkles, Star, TrendingUp, Trophy } from 'lucide-react';
+import logo from "../assets/logo.png"
 
 export default function Dashboard() {
+    const location = useLocation();
+    const navigate = useNavigate();
     const sidebarNav = [
-        { icon: BookOpen, label: 'Learn' },
-        { icon: Globe, label: 'Letters' },
-        { icon: Sparkles, label: 'Practice' },
-        { icon: Trophy, label: 'Leaderboards' },
-        { icon: TrendingUp, label: 'Quests' },
-        { icon: HelpCircle, label: 'Shop' },
-        { icon: Star, label: 'Profile' },
-        { icon: Menu, label: 'More' },
+        { icon: BookOpen, label: 'Learn', path: '/learn' },
+        { icon: Globe, label: 'Letters', path: '/letters' },
+        { icon: Sparkles, label: 'Practice', path: '/practice' },
+        { icon: Trophy, label: 'Leaderboards', path: '/leaderboards' },
+        { icon: TrendingUp, label: 'Quests', path: '/quests' },
+        { icon: HelpCircle, label: 'Shop', path: '/shop' },
+        { icon: Star, label: 'Profile', path: '/profile' },
+        { icon: Menu, label: 'More', path: '/more' },
     ];
 
     // WOW factor: pixel burst effect
@@ -46,17 +48,7 @@ export default function Dashboard() {
             </div>
             <PixelBurst show={showBurst} />
             {/* Sidebar */}
-            <aside className="w-20 md:w-56 flex flex-col items-center py-6 bg-white border-r border-gray-100 shadow-sm min-h-screen z-10">
-                <img src={logo} alt="Fide" className="h-12 w-12 mb-8" />
-                <nav className="flex flex-col gap-4 w-full items-center">
-                    {sidebarNav.map((item, idx) => (
-                        <button key={item.label} className="flex items-center gap-3 w-16 md:w-44 px-2 py-2 rounded-lg hover:bg-rose-50 transition group">
-                            <item.icon className="text-rose-600 group-hover:scale-110 transition" size={24} />
-                            <span className="hidden md:inline text-base font-medium text-gray-700 group-hover:text-rose-700">{item.label}</span>
-                        </button>
-                    ))}
-                </nav>
-            </aside>
+            <Sidebar />
 
             {/* Main Dashboard */}
             <main className="flex-1 flex flex-col md:flex-row gap-8 p-6 md:p-12 bg-transparent z-10">

@@ -18,7 +18,8 @@ import {
     Star,
     ChevronDown,
     Cross,
-    BookMarked
+    BookMarked,
+    Link
 } from 'lucide-react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -100,9 +101,11 @@ export default function Home() {
                             <a href="#features" className="text-gray-600 hover:text-rose-600 transition-colors duration-300 font-medium">Fitur</a>
                             <a href="#how-it-works" className="text-gray-600 hover:text-rose-600 transition-colors duration-300 font-medium">Cara Kerja</a>
                             <a href="#levels" className="text-gray-600 hover:text-rose-600 transition-colors duration-300 font-medium">Tingkatan</a>
-                            <button className="px-6 py-2 bg-gradient-to-r from-rose-600 to-rose-700 text-white rounded-full font-semibold hover:from-rose-700 hover:to-rose-800 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-rose-500/25">
-                                Mulai Belajar
-                            </button>
+                            <Link to="/learn">
+                                <button className="px-6 py-2 bg-gradient-to-r from-rose-600 to-rose-700 text-white rounded-full font-semibold hover:from-rose-700 hover:to-rose-800 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-rose-500/25">
+                                    Mulai Belajar
+                                </button>
+                            </Link>
                         </div>
                         <button 
                             className="md:hidden text-gray-600"
